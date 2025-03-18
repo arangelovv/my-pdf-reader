@@ -1,11 +1,16 @@
 import { create } from "zustand";
-
+import { persist } from "zustand/middleware";
 interface LibraryStore {
 	mode: "minimized" | "expanded" | "fullscreen";
-	setMode: (mode: "minimized" | "expanded" | "fullscreen") => void;
+	setMode: (mode: LibraryStore["mode"]) => void;
 }
 
-export const useLibraryStore = create<LibraryStore>((set) => ({
-	mode: "minimized",
-	setMode: (mode) => set({ mode }),
-}));
+export const useLibraryStore = create<LibraryStore>()(
+	persist(
+		(set) => ({
+			mode: "minimized",
+			setMode: (mode) => set({ mode }),
+		}),
+		{ name: "library-mode" }
+	)
+);
