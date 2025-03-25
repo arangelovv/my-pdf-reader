@@ -1,23 +1,48 @@
-import { useLibraryStore } from "../stores/library.stores";
+import { FileText } from "lucide-react";
+import { FolderSearch } from "lucide-react";
+import { BookOpenText } from "lucide-react";
 
 export function Home() {
-	const { mode, setMode } = useLibraryStore();
-
-	const toggleLibraryMode = () => {
-		setMode(mode === "expanded" ? "minimized" : "expanded");
-	};
-
 	return (
-		<div className="p-4">
-			<h1 className="text-3xl font-bold mb-4">Welcome Home</h1>
-			<p className="text-gray-600">
-				This is the home page of your PDF Reader application.
-			</p>
-			<button
-				onClick={toggleLibraryMode}
-				className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-				{mode === "expanded" ? "Minimize Library" : "Expand Library"}
-			</button>
+		<div className="h-full py-6 px-8 flex flex-col gap-4">
+			<section className="flex flex-col gap-2">
+				<h1 className="text-4xl font-bold">Welcome to MyPDFReader </h1>
+				<p className="text-lg text-gray-600">
+					Your personal PDF library and reading companion
+				</p>
+			</section>
+			<section className="flex flex-col gap-4">
+				<h2 className="text-2xl font-bold">Getting Started</h2>
+				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+					<div className="flex flex-col gap-2 border rounded-md p-4 border-gray-300 shadow-xs">
+						<div className="flex items-center justify-center w-12 h-12 bg-blue-200 rounded-full">
+							<FileText className="w-6 h-6 text-blue-600" />
+						</div>
+						<span className="text-lg font-semibold">Add PDFs</span>
+						<span className="font-medium">
+							Upload your PDF files to build your personal library
+						</span>
+					</div>
+					<div className="flex flex-col gap-2 border rounded-md p-4 border-gray-300 shadow-xs">
+						<div className="flex items-center justify-center w-12 h-12 bg-blue-200 rounded-full">
+							<FolderSearch className="w-6 h-6 text-blue-600" />
+						</div>
+						<span className="text-lg font-semibold">Organize</span>
+						<span className="font-medium">
+							Sort and search your PDFs to find what you need quickly
+						</span>
+					</div>
+					<div className="flex flex-col gap-2 border rounded-md p-4 border-gray-300 shadow-xs">
+						<div className="flex items-center justify-center w-12 h-12 bg-blue-200 rounded-full">
+							<BookOpenText className="w-6 h-6 text-blue-600" />
+						</div>
+						<span className="text-lg font-semibold">Read</span>
+						<span className="font-medium">
+							Open and read your PDFs with our powerful reader
+						</span>
+					</div>
+				</div>
+			</section>
 		</div>
 	);
 }
