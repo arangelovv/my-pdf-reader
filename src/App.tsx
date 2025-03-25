@@ -7,16 +7,16 @@ function App() {
 
 	if (mode === "fullscreen") {
 		return (
-			<div className="min-h-screen bg-gray-100">
+			<div className="min-h-screen">
 				<Library />
 			</div>
 		);
 	}
 
 	return (
-		<div className="min-h-screen bg-gray-100 flex flex-row">
+		<div className="min-h-screen flex">
 			<Library />
-			<main className="grow">
+			<main className="flex-1 min-w-0">
 				<Outlet />
 			</main>
 		</div>

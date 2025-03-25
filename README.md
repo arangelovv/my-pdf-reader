@@ -9,6 +9,8 @@ A modern web application for reading and managing PDF files, built with React an
 - **Vite** - Next Generation Frontend Tooling
 - **TanStack Router** - Type-safe routing for React
 - **Tailwind CSS** - A utility-first CSS framework
+- **Zustand** - A small, fast and scalable state management solution
+- **Lucide Icons** - Beautiful & consistent icons
 
 ## 📋 Prerequisites
 

@@ -6,7 +6,7 @@ export function PreviewCard() {
 	const containerClasses =
 		mode === "fullscreen"
 			? "flex flex-col cursor-pointer hover:text-blue-500 hover:scale-105 transition-all duration-300"
-			: "flex flex-col w-full h-2/5 flex-shrink-0 cursor-pointer hover:text-blue-500 hover:scale-105 transition-all duration-300";
+			: "flex flex-col w-full h-2/5 flex-shrink-0 cursor-pointer hover:text-blue-500 hover:scale-105 transition-all duration-300 z-40";
 
 	const previewImageClasses =
 		mode === "fullscreen"
