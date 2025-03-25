@@ -12,6 +12,10 @@ A modern web application for reading and managing PDF files, built with React an
 - **Zustand** - A small, fast and scalable state management solution
 - **Lucide Icons** - Beautiful & consistent icons
 
+## 🎨 Design
+
+The UI of this application was designed with the assistance of V0 by Vercel, an AI-powered design tool.
+
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
