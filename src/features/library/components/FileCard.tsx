@@ -1,30 +1,27 @@
-import { useLibraryStore } from "../../../stores/library.stores";
+import { FileText, Trash2 } from "lucide-react";
 
-export function PreviewCard() {
-	const mode = useLibraryStore((state) => state.mode);
-
-	const containerClasses =
-		mode === "fullscreen"
-			? "flex flex-col cursor-pointer hover:text-blue-500 hover:scale-105 transition-all duration-300"
-			: "flex flex-col w-full h-2/5 flex-shrink-0 cursor-pointer hover:text-blue-500 hover:scale-105 transition-all duration-300 z-40";
-
-	const previewImageClasses =
-		mode === "fullscreen"
-			? "aspect-[3/4] rounded-lg bg-gray-300"
-			: "flex flex-col w-full grow rounded-lg bg-gray-300";
-
+export function FileCard() {
 	return (
-		<div className={containerClasses}>
-			<div
-				id="preview-none"
-				className={previewImageClasses}></div>
-			<div
-				id="preview-info"
-				className="flex flex-col pt-2 pb-2">
-				<span className="font-bold text-gray-950">The Hobbit</span>
-				<span className="text-sm font-medium text-gray-700">
-					J.R.R. Tolkien
-				</span>
+		<div className="group relative flex p-2 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition-all duration-300">
+			<div className="opacity-0 group-hover:opacity-100 absolute top-2 right-2 transition-opacity duration-300">
+				<button className="p-1  bg-red-400 rounded-lg cursor-pointer">
+					<Trash2 className="w-4 h-4 text-white" />
+				</button>
+			</div>
+			<div className="flex flex-col gap-2">
+				<img
+					src="/pdf-icon.svg"
+					alt="pdf-icon"
+					className="w-full h-full object-cover rounded-lg aspect-[3/4]"
+				/>
+				<div className="flex flex-col gap-1">
+					<span className="text-base font-semibold">Game of Thrones</span>
+					<span className="text-sm text-gray-500">George R.R. Martin</span>
+					<div className="flex flex-row items-center gap-2">
+						<FileText className="w-4 h-4 text-gray-500" />
+						<span className="text-xs text-gray-500">684 Pages</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
