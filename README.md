@@ -1,6 +1,6 @@
 # PDF Reader Application
 
-A modern web application for reading and managing PDF files, built with React and TypeScript.
+A modern web application for reading and managing PDF files locally in your browser. Built with React and TypeScript, it provides offline access to your PDF library with fast, client-side storage.
 
 ## 🚀 Technologies
 
@@ -11,6 +11,16 @@ A modern web application for reading and managing PDF files, built with React an
 - **Tailwind CSS** - A utility-first CSS framework
 - **Zustand** - A small, fast and scalable state management solution
 - **Lucide Icons** - Beautiful & consistent icons
+- **Dexie.js** - A wrapper for IndexedDB that provides a better API for client-side storage
+
+## 💾 Data Storage
+
+The application uses IndexedDB through Dexie.js for client-side storage of PDF files. This approach:
+
+- Enables offline access to PDFs
+- Provides fast local storage for large files
+- Maintains data persistence between sessions
+- Allows efficient querying and management of PDF metadata
 
 ## 🎨 Design
 
@@ -45,6 +55,21 @@ npm run dev
 ```
 
 The application will be available at `http://localhost:5173`
+
+## 🔒 Privacy & Security
+
+- All PDF files are stored locally in your browser
+- No data is sent to external servers
+- Your files remain private and accessible offline
+- IndexedDB storage is isolated to your browser
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👥 Authors
 
