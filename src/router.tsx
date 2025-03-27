@@ -26,21 +26,16 @@ const homeRoute = createRoute({
 	component: Home,
 });
 
-const pdfViewerTestRoute = createRoute({
+export const fileRoute = createRoute({
 	getParentRoute: () => rootRoute,
-	path: "/test",
+	path: "/viewer/$fileId",
 	component: PdfViewerTest,
 });
 
-const routeTree = rootRoute.addChildren([
-	indexRoute,
-	homeRoute,
-	pdfViewerTestRoute,
-]);
+const routeTree = rootRoute.addChildren([indexRoute, homeRoute, fileRoute]);
 
 export const router = createRouter({ routeTree });
 
-// Register your router for maximum type safety
 declare module "@tanstack/react-router" {
 	interface Register {
 		router: typeof router;

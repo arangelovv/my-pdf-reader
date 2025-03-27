@@ -3,6 +3,7 @@ import { PdfFile, db } from "../shared/db";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import { fileRoute } from "../router";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 	"pdfjs-dist/build/pdf.worker.min.mjs",
@@ -13,11 +14,13 @@ export function PdfViewerTest() {
 	const [pdfFile, setPdfFile] = useState<PdfFile | undefined>();
 	const [pdfBuffer, setPdfBuffer] = useState<ArrayBuffer | undefined>();
 	const [numPages, setNumPages] = useState<number>(0);
+	const { fileId } = fileRoute.useParams();
 
 	useEffect(() => {
 		const loadFirstPdf = async () => {
 			try {
-				const pdf = await db.table("pdfFiles").get(12); // Get PDF with id 1
+				const pdf = await db.pdfFiles.get(Number(fileId));
+				console.log(fileId);
 				setPdfFile(pdf);
 				if (pdf) {
 					setPdfBuffer(pdf.content);
@@ -34,8 +37,8 @@ export function PdfViewerTest() {
 	}
 
 	return (
-		<div className="flex flex-col items-center overflow-auto h-full">
-			{pdfBuffer && (
+		<div className="flex flex-col items-center overflow-auto h-full p-4">
+			<div className="border border-gray-300 rounded-lg p-4">
 				<Document
 					file={pdfBuffer}
 					onLoadSuccess={onDocumentLoadSuccess}>
@@ -47,7 +50,7 @@ export function PdfViewerTest() {
 						/>
 					))}
 				</Document>
-			)}
+			</div>
 		</div>
 	);
 }
