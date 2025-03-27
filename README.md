@@ -4,6 +4,7 @@ A modern web application for reading and managing PDF files locally in your brow
 
 ## 📸 Showcase
 
+|                                              |                                                 |
 | -------------------------------------------- | ----------------------------------------------- |
 | ![Empty Library View](public/home_empty.png) | ![Populated Library View](public/populated.png) |
 
