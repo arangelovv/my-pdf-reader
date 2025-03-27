@@ -1,16 +1,38 @@
 import { Trash2 } from "lucide-react";
-import { PdfFile } from "../../../shared/db";
+import { db, PdfFile } from "../../../shared/db";
 import { Link } from "@tanstack/react-router";
+import { useLibraryStore } from "../../../stores/library.stores";
 
 export function FileCard({ pdfFile }: { pdfFile: PdfFile }) {
+	const { mode, setMode } = useLibraryStore();
+
+	const handleClick = () => {
+		if (mode === "fullscreen") {
+			setMode("expanded");
+		}
+	};
+
 	return (
 		<Link
 			to="/viewer/$fileId"
 			params={{ fileId: pdfFile.id.toString() }}
+			onClick={handleClick}
 			className="[&.active]:bg-blue-100 rounded-lg">
 			<div className="group relative flex p-2 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition-all duration-300">
 				<div className="opacity-0 group-hover:opacity-100 absolute top-2 right-2 transition-opacity duration-300">
-					<button className="p-1  bg-red-400 rounded-lg cursor-pointer">
+					<button
+						onClick={(e) => {
+							e.preventDefault();
+							e.stopPropagation();
+							db.pdfFiles.delete(pdfFile.id);
+							if (
+								window.location.pathname.startsWith("/viewer/") &&
+								window.location.pathname.endsWith(pdfFile.id.toString())
+							) {
+								window.location.href = "/";
+							}
+						}}
+						className="p-1 bg-red-400 rounded-lg cursor-pointer hover:bg-red-500">
 						<Trash2 className="w-4 h-4 text-white" />
 					</button>
 				</div>

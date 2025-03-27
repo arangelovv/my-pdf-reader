@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { useEffect, useState } from "react";
 import { PdfFile, db } from "../shared/db";
 import { Document, Page, pdfjs } from "react-pdf";
