@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-router";
 import App from "./App";
 import { Home } from "./pages/Home";
+import { PdfViewerTest } from "./pages/PdfViewerTest";
 
 const rootRoute = createRootRoute({
 	component: App,
@@ -25,7 +26,17 @@ const homeRoute = createRoute({
 	component: Home,
 });
 
-const routeTree = rootRoute.addChildren([indexRoute, homeRoute]);
+const pdfViewerTestRoute = createRoute({
+	getParentRoute: () => rootRoute,
+	path: "/test",
+	component: PdfViewerTest,
+});
+
+const routeTree = rootRoute.addChildren([
+	indexRoute,
+	homeRoute,
+	pdfViewerTestRoute,
+]);
 
 export const router = createRouter({ routeTree });
 

@@ -4,22 +4,29 @@ import { db } from "../../../shared/db";
 
 export function AddFileButton() {
 	const fileInputRef = useRef<HTMLInputElement>(null);
+
 	const handleClick = () => {
 		console.log("clicked");
 		fileInputRef.current?.click();
 	};
-
 	const handleFileChange = async (
 		event: React.ChangeEvent<HTMLInputElement>
 	) => {
 		const file = event.target.files?.[0];
 
 		if (file) {
+			// Convert file to ArrayBuffer
+			const fileBuffer = await file.arrayBuffer();
+
 			const id = await db.table("pdfFiles").add({
 				name: file.name,
 				size: file.size,
+				content: fileBuffer, // Store the actual PDF content
+				dateAdded: new Date(),
+				lastRead: null,
 			});
-			console.log("File selected:", id);
+
+			console.log("File saved:", id, file, fileBuffer);
 		}
 	};
 
