@@ -5,9 +5,16 @@ import { AddFileButton } from "./components/AddFileButton";
 import { LibSearchBar } from "./components/LibSearchBar";
 import { MinimisedLibrary } from "./components/MinimisedLibrary";
 import { PopulatedLibrary } from "./components/PopulatedLibrary";
+import { useLiveQuery } from "dexie-react-hooks";
+import { db } from "../../shared/db";
+import { EmptyLibrary } from "./components/EmptyLibrary";
 
 export function Library() {
 	const mode = useLibraryStore((state) => state.mode);
+
+	const pdfCount = useLiveQuery(async () => {
+		return await db.pdfFiles.count();
+	}, []);
 
 	const libContainerClasses =
 		mode === "fullscreen"
@@ -25,12 +32,12 @@ export function Library() {
 				<LibToggle />
 				<FullscreenToggle />
 			</div>
-			<div className="p-4 flex flex-row items-center gap-2 border-b border-gray-300">
-				<LibSearchBar />
+			<div className="p-4 flex flex-row items-center justify-center gap-2 border-b border-gray-300">
+				{pdfCount !== 0 && <LibSearchBar />}
 				<AddFileButton />
 			</div>
 			<div className="flex-1 overflow-hidden">
-				<PopulatedLibrary />
+				{pdfCount === 0 ? <EmptyLibrary /> : <PopulatedLibrary />}
 			</div>
 		</div>
 	);
