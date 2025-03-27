@@ -14,6 +14,8 @@
     "@tanstack/react-router": "^1.114.17",
     "@tanstack/router-core": "^1.114.17",
     "@tanstack/router-devtools": "^1.114.18",
+    "dexie": "^4.0.11",
+    "dexie-react-hooks": "^1.1.7",
     "lucide-react": "^0.483.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
