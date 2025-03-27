@@ -15,7 +15,7 @@ function App() {
 
 	return (
 		<div className="h-screen flex overflow-hidden">
-			<div className="h-full flex-shrink-0">
+			<div className="h-full flex-shrink-0 flex justify-center">
 				<Library />
 			</div>
 			<main className="flex-1 min-w-0 overflow-auto">
