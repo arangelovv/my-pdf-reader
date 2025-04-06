@@ -14,3 +14,4 @@ export const useLibraryStore = create<LibraryStore>()(
 		{ name: "library-mode" }
 	)
 );
+

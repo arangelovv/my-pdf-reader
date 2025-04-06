@@ -2,8 +2,6 @@
 
 A modern web application for reading and managing PDF files locally in your browser. Built with React and TypeScript, it provides offline access to your PDF library with fast, client-side storage.
 
-## 📸 Showcase
-
 |                                              |                                                 |
 | -------------------------------------------- | ----------------------------------------------- |
 | ![Empty Library View](public/home_empty.png) | ![Populated Library View](public/populated.png) |
